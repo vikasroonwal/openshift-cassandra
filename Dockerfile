@@ -4,7 +4,7 @@ FROM jboss/base-jdk:8
 EXPOSE 9042 9160 7000 7001
 
 
-ENV CASSANDRA_VERSION="3.10" \
+ENV CASSANDRA_VERSION="3.11.1" \
     CASSANDRA_HOME="/opt/apache-cassandra" \
     HOME="/home/cassandra" \
     PATH="/opt/apache-cassandra/bin:$PATH" 
@@ -16,7 +16,7 @@ RUN yum install -y -q bind-utils && \
    yum clean all
 
 RUN cd /opt &&\
-	curl -LO http://apache.uvigo.es/cassandra/$CASSANDRA_VERSION/apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && ls -l &&\ 
+	curl -LO http://redrockdigimark.com/apachemirror/cassandra/$CASSANDRA_VERSION/apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && ls -l &&\ 
     tar xvzf apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
     rm apache-cassandra-$CASSANDRA_VERSION-bin.tar.gz && \
     ln -s apache-cassandra-$CASSANDRA_VERSION apache-cassandra
