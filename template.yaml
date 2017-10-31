@@ -10,7 +10,7 @@ parameters:
 - name: SOURCE_REPOSITORY_URL
   description: URL of the Git repository Dockerfile
   required: true
-  value: https://github.com/keedio/openshift-cassandra.git
+  value: https://github.com/vikasroonwal/openshift-cassandra.git
 - name: OBJECT_NAME_PREFIX
   description: Name prefix for each object created
   required: true
