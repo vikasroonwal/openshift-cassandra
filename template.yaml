@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Template
 metadata:
-  name: openstack-cassandra-build
+  name: cassandra
   annotations:
-    description: Cassandra builder for openstack-poc
-    tags: logs,poc,openstack,cassandra
+    description: Cassandra builder for DV
+    tags: cassandra
 
 parameters:
 - name: SOURCE_REPOSITORY_URL
@@ -14,7 +14,7 @@ parameters:
 - name: OBJECT_NAME_PREFIX
   description: Name prefix for each object created
   required: true
-  value: cassandra-openstack-poc
+  value: cassandra
 
 objects:
 - apiVersion: v1
