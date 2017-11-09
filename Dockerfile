@@ -141,9 +141,6 @@ RUN mkdir -p /var/lib/cassandra "$CASSANDRA_CONFIG" \
 	&& chown -R cassandra:cassandra /var/lib/cassandra "$CASSANDRA_CONFIG" \
 	&& chmod 777 /var/lib/cassandra "$CASSANDRA_CONFIG"
 
-RUN chgrp -R 0 /etc/cassandra && \
-    chmod -R g=u /etc/cassandra
-
 RUN chgrp -R 0 /var/lib/cassandra && \
     chmod -R g=u /var/lib/cassandra
 
