@@ -132,17 +132,19 @@ RUN set -ex; \
 # https://issues.apache.org/jira/browse/CASSANDRA-11661
 	sed -ri 's/^(JVM_PATCH_VERSION)=.*/\1=25/' "$CASSANDRA_CONFIG/cassandra-env.sh"
 
-COPY docker-entrypoint.sh /etc/cassandra/docker-entrypoint.sh
-ENTRYPOINT ["/etc/cassandra/docker-entrypoint.sh"]
-
 COPY cassandra.yaml "$CASSANDRA_CONFIG"/cassandra.yaml
 
 RUN mkdir -p /var/lib/cassandra "$CASSANDRA_CONFIG" \
 	&& chown -R cassandra:cassandra /var/lib/cassandra "$CASSANDRA_CONFIG" \
 	&& chmod 777 /var/lib/cassandra "$CASSANDRA_CONFIG"
 
+COPY docker-entrypoint.sh /etc/cassandra/docker-entrypoint.sh
+ENTRYPOINT ["/etc/cassandra/docker-entrypoint.sh"]
+
 RUN chgrp -R 0 /var/lib/cassandra && \
     chmod -R g=u /var/lib/cassandra
+
+RUN chmod 777 /etc/cassandra/docker-entrypoint.sh
 
 RUN chgrp -R 0 /var/log/cassandra && \
     chmod -R g=u /var/log/cassandra		
